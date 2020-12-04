@@ -9,6 +9,11 @@ lines = [l.rstrip('\n') for l in sys.stdin.read().split('\n\n')]
 ALL = {'ecl', 'pid', 'eyr', 'hcl', 'byr', 'iyr', 'hgt'}
 
 valid = 0
+# part 1:
+# for line in lines:
+#     chunks = re.findall(r'(\w+):', line)
+#     if len(ALL - set(chunks)) == 0:
+#         valid += 1
 for line in lines:
     chunks = re.findall(r'(\w+):(\S+)', line)
 
