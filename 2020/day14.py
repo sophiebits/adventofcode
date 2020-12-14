@@ -26,6 +26,20 @@ def allmasks(pos, mask):
                 yield 2*m + 0
                 yield 2*m + 1
 
+# part 2 alternate solution, written later:
+# def allmasks(mask):
+#     if not mask:
+#         yield ''
+#         return
+#     for m in allmasks(mask[1:]):
+#         if mask[0] == '0':
+#             yield 'X' + m  # leave unchanged
+#         elif mask[0] == '1':
+#             yield '1' + m  # replace with 1
+#         elif mask[0] == 'X':
+#             yield '0' + m  # replace with 0
+#             yield '1' + m  # replace with 1
+
 
 mask = None
 mem = collections.defaultdict(int)
@@ -39,5 +53,8 @@ for line in lines:
         # mem[pos] = domask(int(arg), mask)
         for m in allmasks(pos, mask):
             mem[m] = int(arg)
+        # part 2 alternate solution:
+        # for m in allmasks(mask):
+        #     mem[domask(pos, m)] = int(arg)
 
 print(sum(mem.values()))
